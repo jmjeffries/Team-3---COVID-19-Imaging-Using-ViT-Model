@@ -11,13 +11,53 @@
 
 
 </head>
-<body>
-
+<body onload ="askPopUp()">
 
 <form>
-    <button> Upload file </button>
+    <!--<creating buttons>-->
+    <!--<input type = "text" placeholder = "Curious if you have COVID-19?">-->
+    <input type = "file" id ="fileInput" name = "fileCOVID" accept =".jpg, .jpeg, .png">
+    <button onclick = "uploadFile()"> Upload File </button>
+    <!--<button> Upload file </button>-->
     <div class = "banner"> </div>
 </form>
+<script>
+    <!--making a popup to ask the user if they are curious to see if they have COVID-->
+
+    function askPopUp(){
+        var answer = confirm("Curious if you have COVID-19?")
+        if (answer){
+            alert("Ok. The next step would be to upload your images. You can upload them below.")
+            validateFiles();
+        }
+        else{
+            alert("Ok. Feel free to browse the site for more information!")
+        }
+    }
+        <!--function that will have the submitted image get uploaded-->
+
+    function uploadFile(){
+
+
+
+    }
+    <!--makes sure that the files that are being uploaded fall in the right catagory-->
+    function validateFiles(){
+        var reponse = document.getElementById('fileInput')
+
+        if (reponse.files.length === 0 ) {
+            alert("File has not been selected")
+            return false;
+        }
+        else{
+            alert("File has been selected: " + reponse.files.name);
+            return true;
+
+        }
+
+
+    }
+</script>
 
 
 </body>
