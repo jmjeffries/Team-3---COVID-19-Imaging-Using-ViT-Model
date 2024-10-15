@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid-19 Imaging Using ViT Model</title>
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+    <div class="banner">
+        <img src="{% static 'images/covid.avif' %}" alt="covid" id="covid">
+        <h1>Transparency</h1>
+    </div>
+
+    <!-- <form class = "upload">
+        <creating buttons>
+        <input type = "text" placeholder = "Curious if you have COVID-19?">
+        <input type = "file" id ="fileInput" name = "fileCOVID" accept =".jpg, .jpeg, .png">
+        <button onclick = "uploadFile()"> Upload File </button>
+        <button> Upload file </button>
+        <div id = "upload"> </div>
+    </form>
+ -->
+    <div class = 'forming'>
+        {% block content %}  
+            <form method="POST" enctype="multipart/form-data" class = 'upload' >
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type = "file" name = 'image'>
+                <button type="submit">Upload</button>
+            </form>
+
+            {% if img_obj %}  
+                <h3>Succesfully Uploaded</h3>  
+                <img src="{{ img_obj.image.url}}" alt="connect" style="max-height:300px">  
+            {% endif %}  
+
+        {% endblock content %}  
+        </div>
+
+</body>
+</html>
