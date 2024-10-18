@@ -16,7 +16,7 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from . import views
 from .views import upload_image  
 from django.conf import settings
@@ -25,9 +25,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('index',views.index),
+    path('home',views.home),
     path('login',views.login),
     path('result', views.result),
-    path('upload/', views.upload_image, name='upload_image'),
-    path('', upload_image, name='upload_image')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('', upload_image)
+] 
+
+if settings.DEBUG:
+    urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
