@@ -5,63 +5,10 @@
     <title>Sign Up Page</title>
 </head>
 <body>
-  <form id="signupForm" method="POST" action="/register">
-    <input type="text"  
-        id="username" 
-        name="username" 
-        required 
-        placeholder="Username"
-        pattern="[a-zA-Z0-9]{3,20}"
-        title="Username must be 3-20 characters long">
+<form id = "signupForm">
+  <input type = "text" 
 
-    <input type="email" 
-        id="email" 
-        name="email" 
-        required 
-        placeholder="Email"
-        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-        title="Valid email address">
-
-    <input type="password" 
-        id="password" 
-        name="password" 
-        required 
-        placeholder="Password"
-        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
-        title="Password must be at least 8 characters, including uppercase, lowercase, numbers, and special characters">
-    
-    <input type="password" 
-        id="confirmPassword" 
-        name="confirmPassword" 
-        required 
-        placeholder="Confirm Password">
-
-    <button type="submit">Sign Up</button>
 </form>
 
-
-<script>
-  const signupForm = document.getElementById('signupForm');
-
-  signupForm.addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const username = document.getElementById('username').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-
-    if (password !== confirmPassword) {
-      alert("Passwords don't match");
-      return;
-    }
-
-    console.log('Username:', username);
-    console.log('Email:', email);
-    console.log('Password:', password);
-
-    window.location.href = 'login.html';
-  });
-</script>
 </body>
 </html>

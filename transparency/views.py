@@ -4,8 +4,9 @@ from django.shortcuts import render, redirect
 from django.conf import settings
 from .forms import ImageUploadForm 
 from .models import UploadImage
-# import keras
-
+import keras
+import numpy as np
+from vit import get_model
 
 #render pages
 def home(request):
@@ -21,6 +22,7 @@ def upload_image(request):
             name = form.cleaned_data.get("name")
             img = form.cleaned_data.get("image") 
 
+
             #changing file name to given name + number of files in the folder
             upload_dir = os.path.join(settings.MEDIA_ROOT, 'uploaded')
             num_images = len(os.listdir(upload_dir))
@@ -29,11 +31,23 @@ def upload_image(request):
             img.name = new_filename
 
 
+
+
             image_obj = UploadImage.objects.create(
                                         name = name, 
                                         img = img
                                         )
             image_obj.save()
+            img_path = image_obj.img.path
+            
+            predictions = analyze_image(img_path)
+
+            # print(predictions)
+
+            return render(request, 'home.html', {
+                'image_obj': image_obj,
+                'predictions': predictions
+            })
             print(image_obj) 
     else:
         form = ImageUploadForm()
@@ -49,15 +63,16 @@ def result(request):
     return render(request, 'result.html')
 
 
-# def analyze_image(img_path):
-#     # Load and preprocess the image
-#     img = image.load_img(img_path, target_size=(72, 72))
-#     img_array = image.img_to_array(img)
-#     img_array = np.expand_dims(img_array, axis=0)
-#     img_array /= 255.0
+def analyze_image(img_path):
+    model = get_model()
+    # Load and preprocess the image
+    img = img.load_img(img_path, target_size=(72, 72))
+    img_array = img.img_to_array(img)
+    img_array = np.expand_dims(img_array, axis=0)
+    img_array /= 255.0
 
-#     # Predict using the model
-#     predictions = model.predict(img_array)
-#     return predictions
+    # Predict using the model
+    predictions = model.predict(img_array)
+    return predictions
 
 

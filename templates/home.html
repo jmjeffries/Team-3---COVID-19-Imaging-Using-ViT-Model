@@ -29,5 +29,18 @@
         {% endif %}  
     </div>
 
+    <div class = 'resultTemp'>
+        {% if predictions %}
+            <div class="results">
+                <h3>Image Analysis Results:</h3>
+                <ul>
+                    {% for prediction in predictions %}
+                        <li>{{ prediction }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+
 </body>
 </html>
