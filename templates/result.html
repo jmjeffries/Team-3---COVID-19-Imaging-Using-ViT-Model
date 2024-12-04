@@ -1,14 +1,31 @@
-<!-- analyzer/templates/result.html -->
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Analysis Result</title>
+    <title>Covid-19 Imaging Using ViT Model</title>
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 </head>
+
 <body>
-    <h1>Analysis Result</h1>
-    <p>{{ result }}</p>
-    <a href="{% url 'upload_image' %}">Upload another image</a>
+
+    <div class="banner">
+        <h1>Covid-19 Image Analysis Results</h1>
+    </div>
+
+    <div class="results">
+        <h3>Image Analysis Results:</h3>
+        <ul>
+            {% for prediction in predictions %}
+                <li>{{ prediction }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <a href="{% url 'home' %}">Go back to upload page</a>
+
 </body>
 </html>
