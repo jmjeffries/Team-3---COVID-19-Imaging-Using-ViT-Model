@@ -26,10 +26,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('home',views.home),
-    path('login',views.login),
-    path('result', views.result),
-    path('', upload_image)
+    path('home/', views.home, name='home'),  
+    path('login/', views.login, name='login'),  
+    path('result/', views.result, name='result'),  
+    path('', upload_image, name='upload'), 
 ]
 
 if settings.DEBUG:

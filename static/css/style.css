@@ -1,33 +1,91 @@
-.banner{
-    background-color:#5499c7;
+/* Banner Styling */
+.banner {
+    background-color: #5499c7;
     color: whitesmoke;
-    padding: 10px 0px;
+    padding: 20px;
     text-align: center;
+    position: relative;
 }
 
-.banner img{
-    position: absolute; /* Add relative positioning */
-    display: flex; /* Add flex to align items */ 
-    align-items: center; /* Align items to center vertically */ 
-
+.banner img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 15px;
 }
-.banner h1{
+
+.banner h1 {
     font-size: 40px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-#covid{
-    width: 100px;
+
+/* Form Styling */
+.forming {
+    padding: 30px;
+    text-align: center;
 }
 
-.forming{
-    padding: 20px 20px;
+.upload {
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
 }
 
-.upload{
-    padding: 20px 20px;
+.upload button {
+    padding: 10px 20px;
+    background-color: #5499c7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-body{
-    margin: 0px
+.upload button:hover {
+    background-color: #4e8bb0;
 }
 
+/* Image Styling */
+.uploaded-img {
+    max-width: 100%;
+    max-height: 300px;
+    margin-top: 20px;
+}
+
+/* Results Styling */
+.resultTemp {
+    padding: 20px;
+    text-align: center;
+    background-color: #e9f7fb;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resultTemp h3 {
+    font-size: 24px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-decoration: underline;
+    color: #2c3e50;
+}
+
+.results ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 18px;
+    color: #34495e;
+}
+
+.results li {
+    margin: 10px 0;
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.results li:hover {
+    background-color: #f7f7f7;
+}
