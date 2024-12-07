@@ -2,6 +2,7 @@ REQUIREMENTS
 
 python==3.12
 keras==3.x
+tensorflow==2.18
 pandas
 numpy
 Django==5.1.3
