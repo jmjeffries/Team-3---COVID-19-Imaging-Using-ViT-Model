@@ -1,26 +1,20 @@
 import os
-from django.shortcuts import render, redirect
 from django.conf import settings
-from .forms import ImageUploadForm 
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+
+from .forms import ImageUploadForm
 from .models import UploadImage
+
 import tensorflow as tf
 from PIL import Image
 import numpy as np
 from vit import get_model
 
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import login
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-
-from django.contrib.auth.models import User
-from django.contrib import messages
-from django.contrib.auth import authenticate, login as auth_login, logout
-from django.contrib import messages
-
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
 
 def register(request):
     if request.method == "POST":
@@ -138,7 +132,7 @@ def process_predictions(predictions):
 
     # Binary Prediction
     if predicted_class == 0:
-        result = "COVID Free"
+        result = "COVID FREE"
     else:
         result = "COVID LIKELY"
 

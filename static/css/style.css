@@ -34,131 +34,6 @@ input[type="text"], input[type="password"] {
 }
 
 
-
-
-/* Login Page Styling */
-.login-container {
-    justify-content: center;
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Center text */
-}
-
-.login-container h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-    text-align: center; /* Redundant but explicit */
-}
-
-.form-group {
-    text-align: center; /* Add this to center the entire form group */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.form-group label {
-    text-align: center;
-    width: 100%; /* Ensure full width */
-}
-
-.form-group input {
-    text-align: center;
-    width: 100%; /* Maintain full width */
-    max-width: 300px; /* Optional: limit input width */
-}
-
-
-.btn-primary {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: center; /* Center button text */
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-.login-container p {
-    margin-top: 15px;
-    font-size: 14px;
-    color: #555;
-    text-align: center;
-}
-
-.login-container a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.login-container a:hover {
-    text-decoration: underline;
-}
-
-/* Sign Up Page Styling */
-.signup-container {
-    width: 100%;
-    max-width: 400px;
-    margin: 100px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.signup-container h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-}
-
-
-.form-actions {
-    margin-top: 20px;
-}
-
-.btn-primary {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-.signup-container p {
-    margin-top: 15px;
-    font-size: 14px;
-    color: #555;
-}
-
-.signup-container a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.signup-container a:hover {
-    text-decoration: underline;
-}
-
 input[style="color: red;"] {
     border: 2px solid red;
 }
@@ -275,13 +150,6 @@ input[style="color: red;"] {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.resultTemp h3 {
-    font-size: 24px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-decoration: underline;
-    color: #2c3e50;
-}
-
 .results ul {
     list-style-type: none;
     padding: 0;
@@ -307,32 +175,34 @@ input[style="color: red;"] {
     text-align: center;
 }
 
-/* Navbar Styling */
-.navbar {
-    display: flex;
-    justify-content: flex-end; /* Align content to the right */
-    background-color: #333;
-    padding: 10px;
-    color: white;
+/* Style for "COVID LIKELY" */
+.likely {
+    color: red; 
+    font-weight: bold;  
+    font-size: 40px;
 }
 
-.user-info {
-    display: flex;
-    align-items: center; /* Align items vertically in the center */
-    gap: 10px; /* Space between username and logout button */
+/* Style for "COVID Free" */
+.free {
+    color: green; 
+    font-weight: bold;  
+    font-size: 40px;
 }
 
-.logout-btn {
-    background-color: red;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
+.covid-tips ul {
+    list-style-type: none; 
+    padding: 0;  
+    margin: 0; 
 }
 
-.logout-btn:hover {
-    background-color: darkred;
+.covid-tips li {
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 8px;
+    box-shadow: none;  
+    margin: 10px 0; 
 }
 
+.covid-tips li:hover {
+    background-color: #f7f7f7;  
+}
