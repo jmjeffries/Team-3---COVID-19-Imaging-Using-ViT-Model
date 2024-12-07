@@ -1,5 +1,6 @@
 REQUIREMENTS
 
+python==3.12
 keras==3.x
 pandas
 numpy
