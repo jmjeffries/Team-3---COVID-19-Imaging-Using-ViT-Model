@@ -1,14 +1,53 @@
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
-<form id = "signupForm">
-  <input type = "text" 
 
-</form>
+<body>
+  <div class="banner">
+      <img src="{% static 'images/covid.avif' %}" alt="covid" id="covid">
+      <h1>Transparency</h1>
+  </div>
+
+  <div class="forming">
+    <div class="upload">
+
+        {% block content %}
+          <h1> Sign Up </h1>
+          <form class = "signInForm" actions = "signup" method = "post">
+              {% csrf_token %}
+              {{ form }}
+              <button> submit </button>
+          </form>
+        {% endblock %}
+        
+        <p>Already have an account? <a href="{% url 'login' %}">Login here</a>.</p>
+    </div>
+
+
+  </div>
+    <div class="bottomBanner">
+      <div class="bottomBannerContent">
+          <div class="bottomBannerSection">
+              <h4>About</h4>
+              <p>Our mission is to provide a simple and secure way to test for COVID online for medical professionals and your average person.</p>
+          </div>
+          <div class="bottomBannerSection">
+              <h4>Contact</h4>
+              <p>Email us at: <a href="mailto:jmjeffries@aggies.ncat.edu">teamclearvision@example.com</a></p>
+          </div>
+      </div>
+      <div class="bottomBannerCopyright">
+          <p>&copy; 2024 Clear Vision. All rights reserved.</p>
+      </div>
+  </div>
 
 </body>
+
 </html>

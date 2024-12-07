@@ -11,10 +11,22 @@
 </head>
 
 <body>
+
     <div class="banner">
         <img src="{% static 'images/covid.avif' %}" alt="covid" id="covid">
         <h1>Transparency</h1>
     </div>
+
+    {% comment %} <div class="navbar">
+        {% if user.is_authenticated %}
+        <div class="user-info">
+            <span>{{ user.username }}</span>
+            <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+        </div>
+        {% else %}
+        <a href="{% url 'login' %}" class="login-btn">Login</a>
+        {% endif %}
+    </div> {% endcomment %}
 
     <div class="forming">
         <form method="POST" enctype="multipart/form-data" class="upload">
@@ -29,6 +41,21 @@
         {% endif %}
     </div>
 
+    <div class="bottomBanner">
+        <div class="bottomBannerContent">
+            <div class="bottomBannerSection">
+                <h4>About</h4>
+                <p>Our mission is to provide a simple and secure way to test for COVID online for medical professionals and your average person.</p>
+            </div>
+            <div class="bottomBannerSection">
+                <h4>Contact</h4>
+                <p>Email us at: <a href="mailto:jmjeffries@aggies.ncat.edu">teamclearvision@example.com</a></p>
+            </div>
+        </div>
+        <div class="bottomBannerCopyright">
+            <p>&copy; 2024 Clear Vision. All rights reserved.</p>
+        </div>
+    </div>
     
 
 </body>

@@ -8,9 +8,46 @@ from PIL import Image
 import numpy as np
 from vit import get_model
 
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import login
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.contrib.auth import authenticate, login as auth_login, logout
+from django.contrib import messages
+
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request) 
+            return redirect("upload")
+    else:
+        form = UserCreationForm()
+    return render(request, "signup.html", {"form": form})
+
+def login_view(request):
+    if request.method == "POST":
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            login(request)
+            return redirect('upload')
+    else:
+        form = AuthenticationForm()
+    return render(request, "login.html", {"form": form})
+
 # Render the home page
+@login_required
 def home(request):
     return render(request, 'home.html')
+
 
 # Handle image upload and prediction
 def upload_image(request):
@@ -40,11 +77,12 @@ def upload_image(request):
             predictions = analyze_image(img_path)
             predictions = process_predictions(predictions)
 
-            # Save predictions in session or pass to result page
-            request.session['predictions'] = predictions  # Store predictions in session
+            # Save predictions and image URL in session
+            request.session['predictions'] = predictions
+            request.session['uploaded_image_url'] = image_obj.img.url 
             
             # Redirect to result page
-            return redirect('result')  # Redirect to 'result' view
+            return redirect('result')
 
     else:
         form = ImageUploadForm()
@@ -57,13 +95,18 @@ def login(request):
 # Display result page with predictions
 def result(request):
     predictions = request.session.get('predictions', [])  # Get predictions from session
-    return render(request, 'result.html', {'predictions': predictions})
+    uploaded_image_url = request.session.get('uploaded_image_url', '')  # Get image URL from session
+    return render(request, 'result.html', {
+        'predictions': predictions,
+        'uploaded_image_url': uploaded_image_url
+    })
+
 
 # Analyze image and make predictions using the model
 def analyze_image(img_path):
     model = get_model()  # Load the model
     img = Image.open(img_path)
-
+    
     # Resize image to match model input shape 
     img = img.resize((72, 72))
 
@@ -74,7 +117,7 @@ def analyze_image(img_path):
 
     # Reshape the image for the model
     img_array = img_array.reshape(1, 72, 72, 1)  # Adjusting shape
-    img_array = img_array / 255.0  # Normalize pixel values
+    # # img_array = img_array / 255.0  # Normalize pixel values
 
     # Predict using the model
     predictions = model.predict(img_array)
@@ -93,10 +136,10 @@ def process_predictions(predictions):
     print("Predicted class index:", predicted_class)
 
 
-    # COVID or not
+    # Binary Prediction
     if predicted_class == 0:
         result = "COVID Free"
     else:
         result = "COVID LIKELY"
 
-    return [result]  # Return the result as a list so it's iterable in the template
+    return [result]  

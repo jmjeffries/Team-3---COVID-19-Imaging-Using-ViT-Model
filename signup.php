@@ -2,7 +2,7 @@
 // Database configuration
 $servername = "localhost";
 $username = "root";
-$password = ""; // Replace with your MySQL root password
+$password = ""; 
 $dbname = "UserDatabase";
 
 // Create connection
@@ -15,11 +15,10 @@ if ($conn->connect_error) {
 
 // Retrieve form data
 $user = $_POST['username'];
-$email = $_POST['email'];
 $pass = password_hash($_POST['password'], PASSWORD_BCRYPT); // Secure password hashing
 
 // Insert data into the database
-$sql = "INSERT INTO Users (username, email, password) VALUES ('$user', '$email', '$pass')";
+$sql = "INSERT INTO Users (username, password) VALUES ('$user', '$pass')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";

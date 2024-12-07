@@ -7,10 +7,5 @@ from patches import Patches
 from patchencoder import PatchEncoder
 
 def get_model():
-    model = keras.saving.load_model('model2.keras', custom_objects={"Patches": Patches, "PatchEncoder":PatchEncoder})
-    # model = keras.saving.load_model("model.keras", custom_objects='Patches''PatchEncoder')
-    # x = keras.random.uniform((72, 72, 1))
-    # assert np.allclose(model.predict(x), model.predict(x))
+    model = keras.saving.load_model('model72.keras', custom_objects={"Patches": Patches, "PatchEncoder":PatchEncoder})
     return model
-
-get_model()

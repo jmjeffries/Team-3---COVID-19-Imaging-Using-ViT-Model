@@ -5,27 +5,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Covid-19 Imaging Using ViT Model</title>
-    
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
 </head>
-
 <body>
-
     <div class="banner">
+        <img src="{% static 'images/covid.avif' %}" alt="covid" id="covid">
         <h1>Covid-19 Image Analysis Results</h1>
     </div>
-
     <div class="results">
         <h3>Image Analysis Results:</h3>
+        {% if uploaded_image_url %}
+            <img src="{{ uploaded_image_url }}" alt="Uploaded Image" style="max-width: 300px; max-height: 300px;">
+        {% endif %}
         <ul>
             {% for prediction in predictions %}
                 <li>{{ prediction }}</li>
             {% endfor %}
         </ul>
+
+        {% if "COVID LIKELY" in predictions %}
+            <div class="covid-tips">
+                <h3>Tips for Fighting COVID-19:</h3>
+                <ul>
+                    <li>Stay home and isolate yourself from others.</li>
+                    <li>Wear a well-fitted mask when around others.</li>
+                    <li>Get plenty of rest and stay hydrated.</li>
+                    <li>Monitor your symptoms and seek medical attention if they worsen.</li>
+                </ul>
+                <h3>COVID-19 Resources:</h3>
+                <ul>
+                    <li><a href="https://www.cdc.gov/coronavirus/2019-ncov/index.html" target="_blank">CDC COVID-19 Information</a></li>
+                    <li><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019" target="_blank">WHO COVID-19 Information</a></li>
+                    <li><a href="https://www.lung.org/lung-health-diseases/lung-disease-lookup/covid-19/prevention" target="_blank">ALA Preventing COVID-19</a></li>
+                </ul>
+            </div>
+        {% endif %}
+
+        {% if "COVID Free" in predictions %}
+            <div class="covid-tips">
+                <h3>Tips for Fighting COVID-19:</h3>
+                <ul>
+                    <li>Stay home and isolate yourself from others.</li>
+                    <li>Wear a well-fitted mask when around others.</li>
+                    <li>Get plenty of rest and stay hydrated.</li>
+                    <li>Monitor your symptoms and seek medical attention if they worsen.</li>
+                </ul>
+                <h3>COVID-19 Resources:</h3>
+                <ul>
+                    <li><a href="https://www.cdc.gov/coronavirus/2019-ncov/index.html" target="_blank">CDC COVID-19 Information</a></li>
+                    <li><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019" target="_blank">WHO COVID-19 Information</a></li>
+                </ul>
+            </div>
+        {% endif %}
     </div>
 
-    <a href="{% url 'home' %}">Go back to upload page</a>
-
+    <a href="{% url 'upload' %}">Go back to upload page</a>
+    
+    <div class="bottomBanner">
+        <div class="bottomBannerContent">
+            <div class="bottomBannerSection">
+                <h4>About</h4>
+                <p>Our mission is to provide a simple and secure way to test for COVID online for medical professionals and your average person.</p>
+            </div>
+            <div class="bottomBannerSection">
+                <h4>Contact</h4>
+                <p>Email us at: <a href="mailto:jmjeffries@aggies.ncat.edu">teamclearvision@example.com</a></p>
+            </div>
+        </div>
+        <div class="bottomBannerCopyright">
+            <p>&copy; 2024 Clear Vision. All rights reserved.</p>
+        </div>
+    </div>
 </body>
 </html>

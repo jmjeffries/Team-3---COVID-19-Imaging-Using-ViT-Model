@@ -1,42 +1,51 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Login in Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
-
 <body>
-<form id = "loginForm">
-    <input type = "text" id="username" name = "username" required>
-    <input type = "password" id = "password" name = "password" required>
-    <button type = "submit" >Login</button>
+    <div class="banner">
+        <img src="{% static 'images/covid.avif' %}" alt="covid" id="covid">
+        <h1>Transparency</h1>
+    </div>
 
-</form>
-<!--function that confirms if the username and password entered match the ones in the database-->
-<script>
-    const loginForm = document.getElementById("loginForm")
-    const errorMessage = document.getElementById()
+    <div class="forming">
+        <div class="upload">
+            
+            {% block content %}
+                <h1> User Login </h1>
+                <form class = "loginForm" actions = "login" method = "post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button> Submit </button>
+                </form>
+            {% endblock %}
+            
+            <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a>.</p>
+        </div>
+    </div>
 
-    loginForm.addEventListener('submit', function (event){
-        event.preventDefault();
-
-        const correctUsername = "Millerm";
-        const correctPassword = "miller123";
-
-        const usernameEntered = document.getElementById("username").value
-        const passwordEntered = document.getElementById("password").value
-
-        if (usernameEntered === correctUsername && passwordEntered === correctPassword){
-            alert("Successful login")
-            window.location.href = "home.html";
-
-        }
-        else{
-
-        }
-
-    })
-</script>
+    <div class="bottomBanner">
+        <div class="bottomBannerContent">
+            <div class="bottomBannerSection">
+                <h4>About</h4>
+                <p>Our mission is to provide a simple and secure way to test for COVID online for medical professionals and your average person.</p>
+            </div>
+            <div class="bottomBannerSection">
+                <h4>Contact</h4>
+                <p>Email us at: <a href="mailto:jmjeffries@aggies.ncat.edu">teamclearvision@example.com</a></p>
+            </div>
+        </div>
+        <div class="bottomBannerCopyright">
+            <p>&copy; 2024 Clear Vision. All rights reserved.</p>
+        </div>
+    </div>
+    
 </body>
 </html>

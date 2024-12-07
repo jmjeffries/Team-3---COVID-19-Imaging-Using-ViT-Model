@@ -26,11 +26,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('home/', views.home, name='home'),  
-    path('login/', views.login, name='login'),  
-    path('result/', views.result, name='result'),  
-    path('', upload_image, name='upload'), 
+    path('', views.login_view, name='login'), 
+    path('home/', views.home, name='home'),
+    path('result/', views.result, name='result'),
+    path('login/', views.login_view, name='login'),
+    path('signup/', views.register, name='signup'),
+    path('home', upload_image, name='upload'), 
+    # path('logout/', views.user_logout, name='logout'),
 ]
 
 if settings.DEBUG:
-    urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
