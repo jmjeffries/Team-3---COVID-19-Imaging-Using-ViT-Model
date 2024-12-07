@@ -1,0 +1,6 @@
+REQUIREMENTS
+
+keras==3.x
+pandas
+numpy
+Django==5.1.3
